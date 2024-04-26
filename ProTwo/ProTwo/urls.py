@@ -21,4 +21,5 @@ urlpatterns = [
     path('', views.index, name="index"),
     path('help/', include('appTwo.urls')),
     path('admin/', admin.site.urls),
+    path('users/', include('appTwo.urls'))
 ]
