@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from appTwo.models import Users
+from appTwo.forms import NewUserForm
 from . import forms
 
 # Create your views here.
@@ -14,14 +15,26 @@ def help(request):
     return render(request,'appTwo/help.html',context=helpdict)
 
 def users(request):
-    users_list = Users.objects.order_by('id')
-    user_dict = {'users': users_list}
-    return render(request, 'appTwo/users.html', context=user_dict)
+    # users_list = Users.objects.order_by('id')
+    # user_dict = {'users': users_list}
+    # return render(request, 'appTwo/users.html', context=user_dict)
+    
+    #creating form by model forms
+    form = NewUserForm(request.POST)
+    if request.method == 'Post':
+        
+        if form.is_valid():
+            form.save(commit=True)
+            return index(request)
+        else:
+            print('INVALID FORM')
+
+    return render(request, 'appTwo/user_form.html', {'form':form})        
 
 def user_form_view(request):
-    form = forms.UserForm()
+    form = forms.NewUserForm()
     if request.method == "POST":
-        form = forms.UserForm(request.POST)
+        form = forms.NewUserForm(request.POST)
 
         if form.is_valid():
             print("Validation success!")
