@@ -1,16 +1,5 @@
 <!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Relative Url Template</title>
-</head>
-<body>
-        <h2>Relative Url Page </h2>
-        <p>Go to <a href="{% url 'apptwo:other' %}">OTHER PAGE</a></p>
-        <p>Go to <a href="{% url 'admin:index' %}">Admin Page</a></p>
-        <p>Go to <a href="{% url 'index' %}">Index Page</a></p>
-
-
-
-</body>
-</html>
+{% extends "appTwo/base.html" %}
+{% block body_block %}
+    <h2>WELCOME TO RELATIVE!</h2>
+{% endblock %}
