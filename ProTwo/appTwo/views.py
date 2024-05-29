@@ -12,7 +12,7 @@ def index(request):
 
 
 def apptwo_index(request):
-    index_dict = {'index_insert':'INDEX Page From appTwo'}
+    index_dict = {'address': 'Company address is two horizon center, Gurgaon', 'employees': 2000}
     return render(request,'appTwo/apptwo_index.html',context=index_dict)
 
 def help(request):

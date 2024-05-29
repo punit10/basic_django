@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 {% extends "appTwo/base.html" %}
+{% load template_filters %}
 {% block body_block %}
         <h2>Welcome to Index page of appTwo </h2>
+{{ address | cut:'center' }}
+<p>Employees: {{ employees | add:"99" }} </p>
+{{ address | add_last:'INDIA' }}
+
 {% endblock %}
 
