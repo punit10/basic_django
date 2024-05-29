@@ -10,6 +10,11 @@ def index(request):
     index_dict = {'index_insert':'INDEX PAGE'}
     return render(request,'appTwo/index.html',context=index_dict)
 
+
+def apptwo_index(request):
+    index_dict = {'index_insert':'INDEX Page From appTwo'}
+    return render(request,'appTwo/apptwo_index.html',context=index_dict)
+
 def help(request):
     helpdict = {'help_insert':'HELP PAGE'}
     return render(request,'appTwo/help.html',context=helpdict)
@@ -45,3 +50,12 @@ def user_form_view(request):
 
 
     return render(request, 'appTwo/user_form.html', {'form': form})
+
+def other_page(request):
+    return render(request, 'appTwo/other.html')
+
+def base(request):
+    return render(request, 'appTwo/base.html')
+
+def relative_url_templates(request):
+    return render(request, 'appTwo/relative_url_templates.html')

@@ -8,10 +8,11 @@
   <body>
     <div class="container">
       <div class="jumbotron">
-        <h2>Welcome to Second Project Index Page, go to /users </h2>
-        <h2>To Register Go to /user_form </h2>
-        {{ index_insert }}
-        <p>Go to <a href="{% url 'apptwo:apptwo_index' %}"> App two </a></p>
+        <h2>Welcome to Index page of appTwo </h2>
+        <p>Click to go to <a href="{% url 'apptwo:relative' %}">Relative page</a> </p>
+        <p>Go to <a href="{% url 'apptwo:other' %}">OTHER PAGE</a></p>
+        <p>Go to <a href="{% url 'admin:index' %}">Admin Page</a></p>
+        <p>Go to <a href="{% url 'index' %}">Index Page</a></p>
       </div>
     </div>
   </body>

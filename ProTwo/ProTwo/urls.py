@@ -18,8 +18,8 @@ from django.urls import path, include
 from appTwo import views
 
 urlpatterns = [
-    path('', include('appTwo.urls')),
+    path('', views.index, name="index"),
     path('admin/', admin.site.urls),
-    # path('', views.index, name="index"),
+    path('apptwo/', include('appTwo.urls')),
 
 ]
