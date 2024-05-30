@@ -1,0 +1,4 @@
+faker
+bcrypt
+django[argon2]
+pillow
