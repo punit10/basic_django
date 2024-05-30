@@ -20,7 +20,7 @@
         </li>
 
         {% if user.is_authenticated %}
-        <li><a class="nav-link active" href="{% url 'logout' %}">Logout</a></li>
+        <li><a class="nav-link active" href="{% url 'logout' %}">Logout {{ user.username }} </a></li>
         {% else %}
         <li><a class="nav-link active" href="{% url 'blog_app:user_login' %}">Login</a></li>
         {% endif %}

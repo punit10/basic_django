@@ -5,6 +5,11 @@
 <div class="jumbotron">
 <h1>Django Learning User Authentication</h1>
     {{ name }}
+    {% if user.is_authenticated %}
+    <h2>Happy Reading! {{ user.username }}</h2>
+    {% else %}
+    <h2>Login for Free!</h2>
+    {% endif %}
 </div>
 
 {% endblock %}
