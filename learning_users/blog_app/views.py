@@ -60,7 +60,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse('index'))
+                return HttpResponseRedirect(reverse('booking'))
             else:
                 return HttpResponse("ACCOUNT NOT ACTIVE! Contact Admin!")
 
@@ -81,4 +81,5 @@ def user_logout(request):
 
 @login_required()
 def booking(request):
-    return HttpResponse("You are Logged in. Enjoy!")
+    # return HttpResponse("You are Logged in. Enjoy!")
+    return render(request, 'blog_app/booking.html', {})
