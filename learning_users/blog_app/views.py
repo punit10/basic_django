@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from blog_app.forms import UserForm, UserProfileInfoForm
-from django.http import HttpResponse
+
+from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -41,3 +45,40 @@ def register(request):
            {'user_form': user_form,
                     'profile_form': profile_form,
                     'registered': registered})
+
+
+# views name should not match anything we have imported like login, authenticate etc
+def user_login(request):
+
+    if request.method == 'POST':
+        filled_username = request.POST.get('username')
+        filled_password = request.POST.get('password')
+
+        # builtin automatic authenticate user, and checks login by login() method. Thanks django
+        user = authenticate(username=filled_username, password=filled_password)
+
+        if user:
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect(reverse('index'))
+            else:
+                return HttpResponse("ACCOUNT NOT ACTIVE! Contact Admin!")
+
+        else:
+            print("Someone tried login and failed!")
+            print("Username {} and Password {}", format(filled_username, filled_password))
+            return HttpResponse('INVALID CREDENTIALS!')
+
+    else:
+        return render(request, 'blog_app/login.html', {})
+
+
+@login_required   # decorator function checks only logged-in users can log out
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('index'))
+
+
+@login_required()
+def booking(request):
+    return HttpResponse("You are Logged in. Enjoy!")

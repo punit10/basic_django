@@ -131,9 +131,11 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIR = [STATIC_DIR, ]
 
-#MEDIA
+# MEDIA
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
+# LOGIN
+LOGIN_URL = '/blog_app/user_login'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
